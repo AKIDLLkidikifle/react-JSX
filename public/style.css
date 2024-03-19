@@ -1,9 +1,5 @@
 .heading{
-    color: red;
-    font-size: large;
-}
-
-img{
-    height: 100px;
-    width: 100px;
+    font-size: 60px;
+    font-weight: bold;
+    border-bottom: 5px solid black;
 }
