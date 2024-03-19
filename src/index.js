@@ -1,11 +1,16 @@
-import react from "react";
-import reactDom  from "react-dom";
-var currentyear = new Date().getFullYear()
+import React from "react";
+import ReactDom  from "react-dom/client";
 
-reactDom.render(
+const img = "https://picsum.photos/200/300";
+const root = ReactDom.createRoot(document.getElementById("root"));
+
+root.render(
    <div>
-      <p>this is kidist</p>
-      <p>copy right {currentyear}</p>
-   </div>,
-   document.getElementById("root")
-)
+     <h1 className="heading">this is react</h1>
+     <div>
+         <img src={img+"?grayscale"} alt=""/>
+         <img src={img+"?grayscale"} alt=""/>
+         <img src={img+"?grayscale"} alt=""/>
+     </div>
+   </div>
+);
