@@ -1,15 +1,16 @@
 import React from "react";
+import Avator from "./Avator";
+import Detail from "./detail";
 
 function Card(props){
     return(
       <div className="card">
         <div className="top">
             <h1 className="name">{props.name}</h1>
-            <img className="circle-img" src={props.img}  alt=""/>
+            <Avator  img={props.img}/>
         </div>
         <div className="bottom">
-            <p className="info">{props.tel}</p>
-            <p className="info">{props.email}</p>
+            <Detail tel={props.tel}  email={props.email}/>
         </div>
       </div>
     )
