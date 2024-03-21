@@ -2,11 +2,7 @@ import React from "react";
 import Emojipedia from "../emoji";
 import Card from "./Card";
 
-function createList(eachlist){
-     return(
-         <Card  key={eachlist.id}  emoji={eachlist.emoji} name={eachlist.name} meaning={eachlist.meaning}/>
-     )
-}
+
 
 function App() {
   return (
@@ -15,7 +11,7 @@ function App() {
         <span>emojipedia</span>
       </h1>
       <dl className="dictionary">
-         {Emojipedia.map(createList)}
+         {Emojipedia.map( eachlist =><Card  key={eachlist.id}  emoji={eachlist.emoji} name={eachlist.name} meaning={eachlist.meaning}/>)}
       </dl>
     </div>
   );
