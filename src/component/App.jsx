@@ -1,26 +1,12 @@
 import React from "react";
-import Login from "./Login";
+import Form from "./Form";
 
-let isLogedIn = true;
-
-function conditionalRendering(){
-  if(isLogedIn===false){
-    return(<h1>Hello</h1>)
-      
-  }
-  else{
-    return(    
-           <Login/>
-    )
-  }
-}
-
-
+let isLogedIn = false;
 
 function App() {
   return (
     <div className="container">
-       {conditionalRendering()}
+       <Form  type={isLogedIn}/>
     </div>
   );
 }
