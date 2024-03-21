@@ -1,18 +1,26 @@
 import React from "react";
-import Emojipedia from "../emoji";
-import Card from "./Card";
+import Login from "./Login";
+
+let isLogedIn = true;
+
+function conditionalRendering(){
+  if(isLogedIn===false){
+    return(<h1>Hello</h1>)
+      
+  }
+  else{
+    return(    
+           <Login/>
+    )
+  }
+}
 
 
 
 function App() {
   return (
-    <div>
-      <h1>
-        <span>emojipedia</span>
-      </h1>
-      <dl className="dictionary">
-         {Emojipedia.map( eachlist =><Card  key={eachlist.id}  emoji={eachlist.emoji} name={eachlist.name} meaning={eachlist.meaning}/>)}
-      </dl>
+    <div className="container">
+       {conditionalRendering()}
     </div>
   );
 }
