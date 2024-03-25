@@ -1,65 +1,39 @@
 import React, {useState} from "react";
 
 function App() {
+  const[inputtext, setInputText] = useState("");
+  const[Item, setitem] = useState([]);
 
-   const [contact, setcontact] = useState({
-       fname: "",
-       lname: "",
-       email:""
-   });
+  function handleONchange(event){
+      const currentText = event.target.value;
+      setInputText(currentText);
+  };
 
-   function handleOnchange(event){
-            const {name, value} = event.target;
+  function handleClick(){
+    setitem((prevValue)=>{
+        return [...prevValue, inputtext]  
+    });
 
-            setcontact(prevvalue => {
-                  return(
-                    { 
-                      ...prevvalue,
-                      [name] : value
-                    }
-                  );
-                  // if(name==="fname"){
-                  //      return(
-                  //       {
-                  //         fname:value,
-                  //       name:prevvalue.lastname,
-                  //         email:prevvalue.email
-                  //       }
-                  //      )
-                  // }
-                  // else if(name==="lname"){
-                  //      return(
-                  //       {
-                  //         fname:prevvalue.firstname,
-                  //         lname:value,
-                  //         email:prevvalue.email  
-                  //       }
-                  //      )
-                  // }
-                  // else{
-                  //       return(
-                  //         {
-                  //           fname:prevvalue.firstname,
-                  //           lname:prevvalue.lastname,
-                  //           email:value
-                  //         }
-                  //       )
-                  // }
-            })
-   }
+    setInputText(" ");
+  };
 
   return (
     <div className="container">
-      <form >
-         <h1>hello {contact.fname} {contact.lname}</h1>
-         <p>{contact.email}</p>
-         <input name="fname" onChange={handleOnchange} type="text" placeholder="What's your name?" value={contact.fname}/>
-         <input name="lname" onChange={handleOnchange} type="text" placeholder="What's your father name?" value={contact.lname}/>
-         <input name="email" onChange={handleOnchange} type="email" placeholder="What's your email address" value={contact.email}/>
-         <button type="submit">Submit</button>
-      </form>
+      <div className="heading">
+        <h1>To-Do List </h1>
+      </div>
+      <div className="form">
+        <input  onChange={handleONchange} type="text" value={inputtext}/>
+        <button onClick={handleClick}> <span>Add</span> </button>
+      </div>
+      <div>
+        <ul> {Item.map((element) => (<li>{element}</li>))} </ul>
+        
+      </div>
     </div>
   );
 }
 
 export default App;
+
+
