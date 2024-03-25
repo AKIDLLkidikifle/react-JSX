@@ -2,36 +2,55 @@ import React, {useState} from "react";
 
 function App() {
 
-   const[color, setcolor] = useState(false);
-
-   const [text, settext] = useState("");
-   const [heading, setheading] = useState("");
-  
-   function handleClick(){
-    setcolor(true);
-   }
-
-   function handleMouseOut(){
-    setcolor(false);
-   }
+   const [contact, setcontact] = useState({
+       firstname: "",
+       lastname: "",
+       email:""
+   });
 
    function handleOnchange(event){
-     settext(event.target.value);
-   }
+            const {value, name} = event.target;
 
-   function handleOnclick(event){
-    setheading(text);
-
-    event.preventDefault();
+            setcontact(prevvalue=>{
+                  if(name==="fname"){
+                       return(
+                        {
+                          firstname:value,
+                          lastname:prevvalue.lastname,
+                          email:prevvalue.email
+                        }
+                       )
+                  }
+                  else if(name==="lname"){
+                       return(
+                        {
+                          firstname:prevvalue.firstname,
+                          lastname:value,
+                          email:prevvalue.email  
+                        }
+                       )
+                  }
+                  else{
+                        return(
+                          {
+                            firstname:prevvalue.firstname,
+                            lastname:prevvalue.lastname,
+                            email:value
+                          }
+                        )
+                  }
+            })
    }
-   
 
   return (
     <div className="container">
-      <form onSubmit={handleOnclick}>
-         <h1>hello {heading.slice(0,3)}</h1>
-         <input onChange={handleOnchange} type="text" placeholder="What's your name?"/>
-         <button type="submit" style={{backgroundColor: color ? "black" : "white"}}  onMouseOut={handleMouseOut} onMouseOver={handleClick}>Submit</button>
+      <form >
+         <h1>hello {contact.firstname} {contact.lastname}</h1>
+         <p>{contact.email}</p>
+         <input name="fname" onChange={handleOnchange} type="text" placeholder="What's your name?" value={contact.firstname}/>
+         <input name="lname" onChange={handleOnchange} type="text" placeholder="What's your father name?" value={contact.lastname}/>
+         <input name="email" onChange={handleOnchange} type="email" placeholder="What's your email address" value={contact.email}/>
+         <button type="submit">Submit</button>
       </form>
     </div>
   );
