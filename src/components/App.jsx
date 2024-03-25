@@ -3,6 +3,9 @@ import React, {useState} from "react";
 function App() {
 
    const[color, setcolor] = useState(false);
+
+   const [text, settext] = useState("");
+   const [heading, setheading] = useState("");
   
    function handleClick(){
     setcolor(true);
@@ -11,13 +14,25 @@ function App() {
    function handleMouseOut(){
     setcolor(false);
    }
+
+   function handleOnchange(event){
+     settext(event.target.value);
+   }
+
+   function handleOnclick(event){
+    setheading(text);
+
+    event.preventDefault();
+   }
    
 
   return (
     <div className="container">
-      <h1>Hello</h1>
-      <input type="text" placeholder="What's your name?" />
-      <button style={{backgroundColor:color ? "black" : "white"}} onMouseOut={handleMouseOut} onMouseOver={handleClick}>Submit</button>
+      <form onSubmit={handleOnclick}>
+         <h1>hello {heading}</h1>
+         <input onChange={handleOnchange} type="text" placeholder="What's your name?"/>
+         <button type="submit" style={{backgroundColor: color ? "black" : "white"}}  onMouseOut={handleMouseOut} onMouseOver={handleClick}>Submit</button>
+      </form>
     </div>
   );
 }
