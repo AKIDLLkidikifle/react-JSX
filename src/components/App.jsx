@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="container">
       <form onSubmit={handleOnclick}>
-         <h1>hello {heading}</h1>
+         <h1>hello {heading.slice(0,3)}</h1>
          <input onChange={handleOnchange} type="text" placeholder="What's your name?"/>
          <button type="submit" style={{backgroundColor: color ? "black" : "white"}}  onMouseOut={handleMouseOut} onMouseOver={handleClick}>Submit</button>
       </form>
