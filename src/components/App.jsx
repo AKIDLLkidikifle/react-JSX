@@ -1,26 +1,23 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 
 function App() {
 
-const [color, setcolor] = useState(false);  
-
-  function handleClick(){
-        console.log("i got clicked");
-  }
-
-  function handleMouseOver(){
+   const[color, setcolor] = useState(false);
+  
+   function handleClick(){
     setcolor(true);
-  }
+   }
 
-  function handleonMouseOut(){
+   function handleMouseOut(){
     setcolor(false);
-  }
-    
+   }
+   
+
   return (
     <div className="container">
       <h1>Hello</h1>
       <input type="text" placeholder="What's your name?" />
-      <button style={{backgroundColor:color ? "black": "white"}} onClick={handleClick} onMouseOut={handleonMouseOut} onMouseOver={handleMouseOver}>Submit</button>
+      <button style={{backgroundColor:color ? "black" : "white"}} onMouseOut={handleMouseOut} onMouseOver={handleClick}>Submit</button>
     </div>
   );
 }
